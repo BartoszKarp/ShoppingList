@@ -2,6 +2,11 @@ package pl.karpiu.ShoppingList.input;
 
 import pl.karpiu.ShoppingList.ShoppingListCommands;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInputCommand {
 
     private ShoppingListCommands shoppingListCommands = new ShoppingListCommands();
@@ -41,10 +46,18 @@ public class UserInputCommand {
     }
 
     public void loadListFromFile(){
+        shoppingListCommands.listShopListFiles();
         shoppingListCommands.removeAllItemsFromList();
         shoppingListCommands.loadListFromFile();
         shoppingListCommands.removeFirstLine();
     }
+
+    public void listShopListFiles(){
+        //TODO
+        shoppingListCommands.listShopListFiles();
+
+    }
+
 
 
 

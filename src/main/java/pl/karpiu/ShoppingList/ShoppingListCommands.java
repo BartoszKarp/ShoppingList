@@ -3,9 +3,7 @@ package pl.karpiu.ShoppingList;
 import pl.karpiu.ShoppingList.products.Categories;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public class ShoppingListCommands {
@@ -132,8 +130,26 @@ public class ShoppingListCommands {
     }
 
     public void removeFirstLine(){
-        //TODO - remove first line form list. Add this to load method
+
         groceryList.remove("[Category]", "[Product]");
+
+    }
+
+    public void listShopListFiles() {
+
+        File directoryPath = new File("C:\\Users\\Magda Tobołkiewicz\\Desktop\\Programowanie\\ShoppingList");
+        File allTxtFiles[] = directoryPath.listFiles();
+
+        System.out.println("Exist shopping lists:");
+
+        for(File file : allTxtFiles) {
+            if(file.isFile() && file.getName().endsWith(".txt")){
+                System.out.println("File name: " + file.getName());
+            } else {
+                System.out.println("There is no shopping lists.");
+            }
+        }
+
 
     }
 

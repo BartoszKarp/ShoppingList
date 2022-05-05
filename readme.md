@@ -17,3 +17,5 @@ This is simple applitaction to making grocery lists.
     a) you can choose .txt file
     b) when grocery list is readed, you can edit readed grocery list
 - Sorting grocery list by product or category
+
+:)

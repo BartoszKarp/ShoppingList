@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 public class Categories {
 
-    private ArrayList<String> shoppingList = new ArrayList<String>();
+    private final ArrayList<String> shoppingList = new ArrayList<String>();
 
     public void addCategories(){
-        shoppingList.add(0, "");
+        shoppingList.add(0, "[Product categories - examples]");
         shoppingList.add(1, "Bakery");
         shoppingList.add(2, "Meat");
         shoppingList.add(3, "Fruit");
         shoppingList.add(4, "Alcohol");
         shoppingList.add(5, "Toileteries");
         shoppingList.add(6, "Pet shop");
+        shoppingList.add(7, "Other");
     }
 
 
@@ -23,7 +24,7 @@ public class Categories {
         System.out.println("Choose product categories:");
 
 
-        for (int i = 1; i < shoppingList.size(); i++) {
+        for (int i = 0; i < shoppingList.size(); i++) {
 
             System.out.println(i + ". " + shoppingList.get(i));
 

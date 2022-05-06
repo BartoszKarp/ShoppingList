@@ -8,7 +8,8 @@ public enum CommandNames {
         LOAD_LIST,
         SAVE_LIST,
         SORT_LIST_BY,
-        EXIT;
+        EXIT,
+        DO_NOTHING;
 
 
 

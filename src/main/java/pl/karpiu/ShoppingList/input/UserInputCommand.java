@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static pl.karpiu.ShoppingList.ShoppingListCommands.numberOfTxtFiles;
+
 public class UserInputCommand {
 
     private ShoppingListCommands shoppingListCommands = new ShoppingListCommands();
@@ -50,15 +52,14 @@ public class UserInputCommand {
     public void loadListFromFile(){
         shoppingListCommands.listShopListFiles();
         shoppingListCommands.removeAllItemsFromList();
-        shoppingListCommands.loadListFromFile();
-        shoppingListCommands.removeFirstLine();
+        if(numberOfTxtFiles != 0) {
+            shoppingListCommands.loadListFromFile();
+            shoppingListCommands.removeFirstLine();
+        } else {
+
+        }
     }
 
-    public void listShopListFiles(){
-        //TODO
-        shoppingListCommands.listShopListFiles();
-
-    }
 
 
 

@@ -3,6 +3,8 @@ package pl.karpiu.ShoppingList;
 import pl.karpiu.ShoppingList.products.Categories;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.BiConsumer;
 
@@ -13,7 +15,8 @@ public class ShoppingListCommands {
     private String fileName;
     private Categories categories;
     private String split = " / ";
-
+    private File allTxtFiles[];
+    public static int numberOfTxtFiles;
     private Scanner scanner = new Scanner(System.in);
     private Map<String, String> groceryList = new HashMap<>();
 
@@ -84,26 +87,27 @@ public class ShoppingListCommands {
 
         BufferedReader reader = null;
 
-        System.out.println("Write file name to save: ");
+        System.out.println("Write file name to load: ");
         fileName = scanner.nextLine();
 
+
         try {
+
             reader = new BufferedReader(new FileReader(fileName + ".txt"));
 
             String line = null;
 
-            // read file line by line
+
             while ((line = reader.readLine()) != null) {
 
-                // split the line by :
+
                 String[] parts = line.split(split);
 
-                // first part is categoryName, second is productName
+
                 String categoryName = parts[0].trim();
                 String productName = parts[1].trim();
 
-                // put categoryName, productName in HashMap if they are
-                // not empty
+
                 if (!categoryName.equals("") && !productName.equals(""))
                     groceryList.put(categoryName, productName);
             }
@@ -112,13 +116,12 @@ public class ShoppingListCommands {
             System.out.println("Loading work properly");
         }
         finally {
-
-            // Always close the BufferedReader
             if (reader != null) {
                 try {
                     reader.close();
                 }
-                catch (Exception e) {
+                catch (IOException e) {
+                    e.printStackTrace();
                 };
             }
         }
@@ -130,31 +133,29 @@ public class ShoppingListCommands {
     }
 
     public void removeFirstLine(){
-
         groceryList.remove("[Category]", "[Product]");
-
     }
 
     public void listShopListFiles() {
+        Path currentRelativePath = Paths.get("");
+        String currentPath = currentRelativePath.toAbsolutePath().toString();
 
-        File directoryPath = new File("C:\\Users\\Dell\\Desktop\\Dokumenty prywatne\\Projekt\\ShoppingList");
-        File allTxtFiles[] = directoryPath.listFiles();
+        File directoryPath = new File(currentPath);
+        allTxtFiles = directoryPath.listFiles();
 
-        int i = 0;
+        numberOfTxtFiles = 0;
 
         System.out.println("Exist shopping lists:");
 
         for(File file : allTxtFiles) {
             if(file.isFile() && file.getName().endsWith(".txt")){
                 System.out.println("File name: " + file.getName());
-                i++;
+                numberOfTxtFiles++;
             }
-
         }
-        if (i == 0) {
+        if (numberOfTxtFiles == 0) {
             System.out.println("There is no shopping lists.");
         }
-
     }
 
 

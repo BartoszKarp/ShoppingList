@@ -46,9 +46,10 @@ public class ShoppingListApplication {
                 case ADD_PRODUCT -> userInputCommand.addProduct();
                 case REMOVE_PRODUCT -> userInputCommand.removeProduct();
                 case SHOW_ALL -> userInputCommand.showGroceryList();
-                case LOAD_LIST -> userInputCommand.loadListFromFile(); //listShopListFiles();
+                case LOAD_LIST -> userInputCommand.loadListFromFile();
                 case SAVE_LIST -> userInputCommand.savingListToFile();
                 case EXIT -> shouldItWork = false;
+                case DO_NOTHING -> System.out.println("Nothing was done. Wrong action. Try again writing number from 1 to 6.");
             }
         }
     }

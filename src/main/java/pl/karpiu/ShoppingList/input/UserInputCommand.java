@@ -29,6 +29,8 @@ public class UserInputCommand {
     }
 
     public void savingListToFile(){
+        shoppingListCommands.listShopListFiles();
+
         if(shoppingListCommands.getGroceryList().isEmpty()){
             System.out.println("List is empty. Add product and try again.");
         } else {

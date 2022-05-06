@@ -98,11 +98,11 @@ public class ShoppingListCommands {
                 // split the line by :
                 String[] parts = line.split(split);
 
-                // first part is name, second is number
+                // first part is categoryName, second is productName
                 String categoryName = parts[0].trim();
                 String productName = parts[1].trim();
 
-                // put name, number in HashMap if they are
+                // put categoryName, productName in HashMap if they are
                 // not empty
                 if (!categoryName.equals("") && !productName.equals(""))
                     groceryList.put(categoryName, productName);
@@ -137,19 +137,23 @@ public class ShoppingListCommands {
 
     public void listShopListFiles() {
 
-        File directoryPath = new File("C:\\Users\\Magda Tobołkiewicz\\Desktop\\Programowanie\\ShoppingList");
+        File directoryPath = new File("C:\\Users\\Dell\\Desktop\\Dokumenty prywatne\\Projekt\\ShoppingList");
         File allTxtFiles[] = directoryPath.listFiles();
+
+        int i = 0;
 
         System.out.println("Exist shopping lists:");
 
         for(File file : allTxtFiles) {
             if(file.isFile() && file.getName().endsWith(".txt")){
                 System.out.println("File name: " + file.getName());
-            } else {
-                System.out.println("There is no shopping lists.");
+                i++;
             }
-        }
 
+        }
+        if (i == 0) {
+            System.out.println("There is no shopping lists.");
+        }
 
     }
 

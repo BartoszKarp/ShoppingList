@@ -1,6 +1,6 @@
 ~~~ FROM ZERO TO HERO ~~~
 
----- GROCERY LIST -----
+---- SHOPPING LIST -----
 
 This is simple applitaction to making grocery lists. 
 

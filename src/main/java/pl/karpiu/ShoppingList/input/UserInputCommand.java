@@ -13,14 +13,12 @@ public class UserInputCommand {
 
     private ShoppingListCommands shoppingListCommands = new ShoppingListCommands();
 
-
     public void addProduct(){
         shoppingListCommands.addProduct();
         System.out.println("Product added.");
     }
 
     public void removeProduct(){
-
         if(shoppingListCommands.getGroceryList().isEmpty()){
             System.out.println("List is empty. Add product and try again.");
         } else {
@@ -37,7 +35,6 @@ public class UserInputCommand {
             System.out.println("List is empty. Add product and try again.");
         } else {
             shoppingListCommands.savingListToFile();
-
         }
     }
 
@@ -59,9 +56,4 @@ public class UserInputCommand {
 
         }
     }
-
-
-
-
-
 }

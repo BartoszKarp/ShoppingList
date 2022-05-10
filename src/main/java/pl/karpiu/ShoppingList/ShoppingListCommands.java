@@ -18,31 +18,33 @@ public class ShoppingListCommands {
     private File allTxtFiles[];
     public static int numberOfTxtFiles;
     private Scanner scanner = new Scanner(System.in);
-    private Map<String, String> groceryList = new HashMap<>();
+    private Map<String, String> groceryList;
+
+    public ShoppingListCommands(){
+        categories = new Categories();
+        groceryList = new HashMap<>();
+    }
 
     public void addProduct() {
-
-        categories = new Categories();
-
-        categories.addCategories();
         categories.showCategories();
-
+        System.out.println("Write product categories:");
         categoryName = scanner.nextLine();
-
         System.out.println("Write product name:");
-
         productName = scanner.nextLine();
         groceryList.put(categoryName, productName);
-
     }
 
     public void removeProduct() {
         System.out.println("Enter product name to remove: ");
-        groceryList.values().remove(scanner.nextLine());
+        String removingProductName = scanner.nextLine();
+            if (groceryList.containsValue(removingProductName)) {
+                groceryList.values().remove(removingProductName);
+            } else {
+                System.out.println("Wrong item name. Try again.");
+            }
     }
 
     public void showGroceryList() {
-
             System.out.println("[Category]"+split+"[Product]");
             BiConsumer<String, String> biconsumer = (key, val) ->
                     System.out.println(key + split + val);
@@ -51,7 +53,6 @@ public class ShoppingListCommands {
 
 
     public void savingListToFile() {
-
             BufferedWriter writer = null;
 
             System.out.println("Write file name to save: ");
@@ -59,22 +60,16 @@ public class ShoppingListCommands {
 
             try {
                 writer = new BufferedWriter(new FileWriter(fileName + ".txt"));
-
                 writer.write("[Category]" + split + "[Product]\n");
 
                 for (Map.Entry<String, String> entry : groceryList.entrySet()) {
                     writer.write(entry.getKey() + split + entry.getValue());
-
                     writer.newLine();
-
                 }
-
                 writer.flush();
-
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-
                 try {
                     writer.close();
                 } catch (Exception e) {
@@ -84,29 +79,21 @@ public class ShoppingListCommands {
     }
 
     public void loadListFromFile(){
-
         BufferedReader reader = null;
 
         System.out.println("Write file name to load: ");
         fileName = scanner.nextLine();
 
-
         try {
-
             reader = new BufferedReader(new FileReader(fileName + ".txt"));
 
             String line = null;
 
-
             while ((line = reader.readLine()) != null) {
 
-
                 String[] parts = line.split(split);
-
-
                 String categoryName = parts[0].trim();
                 String productName = parts[1].trim();
-
 
                 if (!categoryName.equals("") && !productName.equals(""))
                     groceryList.put(categoryName, productName);
@@ -141,8 +128,8 @@ public class ShoppingListCommands {
         String currentPath = currentRelativePath.toAbsolutePath().toString();
 
         File directoryPath = new File(currentPath);
-        allTxtFiles = directoryPath.listFiles();
 
+        allTxtFiles = directoryPath.listFiles();
         numberOfTxtFiles = 0;
 
         System.out.println("Exist shopping lists:");

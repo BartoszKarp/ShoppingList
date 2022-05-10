@@ -11,13 +11,10 @@ public class UserInputManager {
     private String value;
 
     public UserInputManager(){
-
         scanner = new Scanner(System.in);
-
     }
 
     public CommandNames nextCommand() {
-
             value = scanner.nextLine();
 
             if (value.equals("1")) {

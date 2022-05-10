@@ -7,7 +7,6 @@ public enum CommandNames {
         SHOW_ALL,
         LOAD_LIST,
         SAVE_LIST,
-        SORT_LIST_BY,
         EXIT,
         DO_NOTHING;
 

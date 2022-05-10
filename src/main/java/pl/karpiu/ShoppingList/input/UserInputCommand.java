@@ -56,4 +56,12 @@ public class UserInputCommand {
 
         }
     }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> origin
 }

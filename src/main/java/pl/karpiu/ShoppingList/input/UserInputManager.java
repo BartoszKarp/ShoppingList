@@ -17,6 +17,11 @@ public class UserInputManager {
     public CommandNames nextCommand() {
             value = scanner.nextLine();
 
+<<<<<<< HEAD
+=======
+            value = scanner.nextLine();
+
+>>>>>>> origin
             if (value.equals("1")) {
                 commandNames = CommandNames.ADD_PRODUCT;
                 return commandNames;

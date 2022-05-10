@@ -84,17 +84,33 @@ public class ShoppingListCommands {
         System.out.println("Write file name to load: ");
         fileName = scanner.nextLine();
 
+
         try {
+
             reader = new BufferedReader(new FileReader(fileName + ".txt"));
 
             String line = null;
 
+<<<<<<< HEAD
             while ((line = reader.readLine()) != null) {
 
                 String[] parts = line.split(split);
                 String categoryName = parts[0].trim();
                 String productName = parts[1].trim();
 
+=======
+
+            while ((line = reader.readLine()) != null) {
+
+
+                String[] parts = line.split(split);
+
+
+                String categoryName = parts[0].trim();
+                String productName = parts[1].trim();
+
+
+>>>>>>> origin
                 if (!categoryName.equals("") && !productName.equals(""))
                     groceryList.put(categoryName, productName);
             }
@@ -128,8 +144,13 @@ public class ShoppingListCommands {
         String currentPath = currentRelativePath.toAbsolutePath().toString();
 
         File directoryPath = new File(currentPath);
+<<<<<<< HEAD
 
         allTxtFiles = directoryPath.listFiles();
+=======
+        allTxtFiles = directoryPath.listFiles();
+
+>>>>>>> origin
         numberOfTxtFiles = 0;
 
         System.out.println("Exist shopping lists:");
